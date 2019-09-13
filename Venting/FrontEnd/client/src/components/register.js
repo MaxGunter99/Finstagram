@@ -25,6 +25,8 @@ class Register extends React.Component {
 
                 console.log( res.data )
                 localStorage.setItem('jwt', res.data.token);
+                localStorage.setItem( 'username' , this.state.userInfo.username )
+                this.props.history.push( '/Posts' )
                 
             })
             .catch(error => {

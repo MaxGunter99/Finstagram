@@ -36,7 +36,6 @@ router.post( '/login' , ( req , res ) => {
         users.findBy({ username })
         .first()
         .then( user => {
-            console.log( 'This is the user:' , user )
             if( user && bcrypt.compareSync( password , user.password ) ) {
                 const token = generateToken( user );
                 res.status( 200 ).json({ message: `Login Success! Welcome ${ user.username } 👋🏼` , token })

@@ -1,7 +1,7 @@
 
 // IMPORTS ⬇︎
 import React from 'react';
-import '../styles/forms.css'
+import '../styles/profile.css'
 import axios from 'axios';
 
 export default class AddPost extends React.Component {

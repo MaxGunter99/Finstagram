@@ -42,8 +42,8 @@ function remove(id) {
       .del();
 }
 
-function update(id, changes) {
+function update( id, changes ) {
     return db('posts')
-      .where({ id })
+      .where( id )
       .update( changes );
 }

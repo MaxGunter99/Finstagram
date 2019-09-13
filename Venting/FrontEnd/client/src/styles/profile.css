@@ -1,0 +1,15 @@
+
+.CurrentUser {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 100px;
+    align-items: center;
+}
+
+.CurrentUser img {
+    height: auto;
+    width: 200px;
+    border-radius: 100px;
+}

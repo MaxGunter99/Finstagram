@@ -9,10 +9,12 @@ import Login from './components/login';
 import Posts from './components/posts';
 import Post from './components/post';
 import AddPost from './components/addPost';
+import myAccount from './components/myAccount';
 
 function App( props ) {
 
   const logout = () => {
+    localStorage.removeItem("userId");
     localStorage.removeItem("jwt");
     localStorage.removeItem("username");
     props.history.push("/");
@@ -40,6 +42,7 @@ function App( props ) {
       <Route exact path = '/Posts' component = { Posts } />
       <Route exact path = '/Post/:id' component = { Post } />
       <Route exact path = '/AddPost' component = { AddPost } />
+      <Route exact path = '/MyAccount' component = { myAccount } />
 
     </div>
   );

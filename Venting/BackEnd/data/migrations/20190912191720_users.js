@@ -4,6 +4,10 @@ exports.up = function(knex) {
     return knex.schema.createTable( 'users' , users => {
   
         users.increments();
+
+        users
+            .string( 'profileUrl' , 300 )
+            .unique();
       
         users
           .string( 'username' , 128 )

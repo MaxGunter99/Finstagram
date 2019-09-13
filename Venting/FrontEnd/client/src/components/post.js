@@ -58,8 +58,8 @@ export default class Post extends React.Component {
                             <p>{this.state.post.username}</p>
                             <p>{this.state.post.post}</p>
                             <p>{this.state.post.created_at}</p>
+                            { this.state.post.username === OnlineUser ? ( <button onClick = { () => this.deletePost() }>Delete</button> ) : null }
                         </div>
-                        { this.state.post.username === OnlineUser ? ( <button onClick = { () => this.deletePost() }>Delete</button> ) : null }
                 </div>
                 <Link to = '/Posts'>Back</Link>
             </>

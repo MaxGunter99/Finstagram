@@ -38,6 +38,7 @@ export default class Posts extends React.Component {
                 <div className = 'posts'>
                     {this.state.posts.map(x => (
                         <div key = {x.id} className = 'post'>
+                            { x.profileUrl === null ? <img src = "https://www.dts.edu/wp-content/uploads/sites/6/2018/04/Blank-Profile-Picture.jpg" alt = 'profile' classname = "ProfilePicture"/> : ( <img src = {x.profileUrl} alt = 'profile' classname = "ProfilePicture"/> ) }
                             <strong><p className = 'username'>{x.username}</p></strong>
                             <p style = {{ backgroundColor: 'white' , color: 'black' , padding: '10px' }}>{x.post}</p>
                             <p>{x.created_at}</p>
