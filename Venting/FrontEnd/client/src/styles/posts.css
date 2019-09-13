@@ -1,0 +1,25 @@
+
+.posts {
+    display: flex;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.post {
+    width: 90%;
+    background-color: rgb(82, 82, 82);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.username {
+    color: black;
+    background-color: white;
+    padding: 10px;
+}
