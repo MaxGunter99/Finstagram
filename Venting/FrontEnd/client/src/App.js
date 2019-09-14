@@ -10,30 +10,35 @@ import Posts from './components/posts';
 import Post from './components/post';
 import AddPost from './components/addPost';
 import myAccount from './components/myAccount';
+import EditProfile from './components/editProfile'
+import EditPost from './components/editPost.js'
 
-function App( props ) {
+import ProfileIcon from './Images/ProfileIcon.png'
+import Add from './Images/Add.png'
+import Compass from './Images/Compass.png'
+import Logo from './Images/Logo.png'
 
-  const logout = () => {
-    localStorage.removeItem("userId");
-    localStorage.removeItem("jwt");
-    localStorage.removeItem("username");
-    props.history.push("/");
-  };
+function App() {
 
   return (
     <div className="App">
       
       { localStorage.getItem( 'jwt' ) ? (
         <nav className = 'NavBar'>
-          <NavLink exact to = '/Posts'> Posts </NavLink>
-          <NavLink exact to = '/AddPost'> Add Post </NavLink>
-          <NavLink exact to = '/MyAccount'> My Account </NavLink>
-          <NavLink exact to = '/' onClick = { logout }> LogOut </NavLink>
+          <div className = 'Logo'>
+            <h1>Finstagram</h1>
+            <img src = {Logo} alt = 'nav'/>
+          </div>
+          <div className = 'NavLinks'>
+            <NavLink exact to = '/Posts'> <img src = {Compass} alt = 'nav'/> </NavLink>
+            <NavLink exact to = '/AddPost'> <img src = {Add} alt = 'nav'/> </NavLink>
+            <NavLink exact to = '/MyAccount'> <img src = {ProfileIcon} alt = 'nav'/> </NavLink>
+          </div>
         </nav>
       ) : (
-        <nav className = 'NavBar'>
-          <NavLink exact to = '/'> Register </NavLink>
-          <NavLink exact to = '/Login' > Login </NavLink>
+        <nav className = 'LoginNavBar'>
+            <h1>Finstagram</h1>
+            <img src = {Logo} alt = 'nav'/>
         </nav>
       ) }
 
@@ -43,6 +48,8 @@ function App( props ) {
       <Route exact path = '/Post/:id' component = { Post } />
       <Route exact path = '/AddPost' component = { AddPost } />
       <Route exact path = '/MyAccount' component = { myAccount } />
+      <Route exact path = '/Edit/:id' component = { EditProfile } />
+      <Route exact path = '/EditPost/:id' component = { EditPost } />
 
     </div>
   );

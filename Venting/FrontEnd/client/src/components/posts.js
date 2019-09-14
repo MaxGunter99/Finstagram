@@ -4,9 +4,16 @@ import axios from 'axios';
 import '../styles/posts.css';
 import { Link } from 'react-router-dom';
 
+import ddd from '../Images/ddd.png'
+import Heart from '../Images/Heart.png'
+import HeartFull from '../Images/HeartFull.png'
+import Comment from '../Images/Comment.png'
+
 export default class Posts extends React.Component {
     state = {
-        posts: []
+        posts: [],
+        like: 'empty',
+        like2: 'inactive',
     };
 
     componentDidMount() {
@@ -22,6 +29,19 @@ export default class Posts extends React.Component {
             .catch(error => console.error(error));
     }
 
+    like = event => {
+        event.preventDefault();
+        if ( this.state.like === 'empty' ) {
+            this.setState({ like: 'full' })
+            this.setState({ like2: 'active' })
+        } 
+        if ( this.state.like === 'full' ) {
+            this.setState({ like: 'empty' })
+            this.setState({ like2: 'inactive' })
+        }
+        console.log( this.state.like )
+    }
+
     render() {
         
         // const scrollToTop = () => {
@@ -34,17 +54,23 @@ export default class Posts extends React.Component {
 
         return (
             <>
-                <h2> Posts: </h2>
                 <div className = 'posts'>
-                    {this.state.posts.map(x => (
-                        <div key = {x.id} className = 'post'>
-                            { x.profileUrl === null ? <img src = "https://www.dts.edu/wp-content/uploads/sites/6/2018/04/Blank-Profile-Picture.jpg" alt = 'profile' classname = "ProfilePicture"/> : ( <img src = {x.profileUrl} alt = 'profile' classname = "ProfilePicture"/> ) }
-                            <strong><p className = 'username'>{x.username}</p></strong>
-                            <p style = {{ backgroundColor: 'white' , color: 'black' , padding: '10px' }}>{x.post}</p>
-                            <p>{x.created_at}</p>
-                            <Link to = {`/Post/${x.id}`}>See this post</Link>
-                        </div>
-                    ))}
+                        { this.state.posts.map(x => (
+                            <div key = {x.id} className = 'post'>
+                                <div>
+                                    <h4 className = 'username'>{x.username}</h4>
+                                    <p className = 'date'>{x.created_at}</p>
+                                    <Link to = {`/Post/${x.id}`}><img src = {ddd}/></Link>
+                                </div>
+                                { x.picture === null ?  null : ( <img src = {x.picture} alt = 'profile' classname = "Picture"/> ) }
+                                <p className = 'postContent'>{x.post}</p>
+                                <div className = 'actions'>
+                                    <img src = { Heart } className = { this.state.like } onClick = {this.like} />
+                                    <img src = { HeartFull } className = { this.state.like2 } onClick = {this.like} />
+                                    <img src = { Comment } />
+                                </div>
+                            </div>
+                        ))}
                 </div>
             </>
         );

@@ -1,5 +1,6 @@
 
 .posts {
+    margin-top: 30px;
     display: flex;
     width: auto;
     align-items: center;
@@ -8,18 +9,112 @@
 }
 
 .post {
-    width: 90%;
-    background-color: rgb(82, 82, 82);
+    width: 75%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 20px;
     margin-bottom: 20px;
-    padding: 10px;
+    border: 1px solid rgb(175, 175, 175);
+    padding: 20px;
+    background-color: white;
 }
 
 .username {
     color: black;
     background-color: white;
-    padding: 10px;
+    width: 70%;
+    margin: 0px;
+    text-indent: 30px;
+}
+
+.nopost {
+    padding-top: 100px;
+    color: black;
+}
+
+.post img {
+    width: 98%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.date {
+    color: black;
+    width: 440px;
+}
+
+img.back {
+    height: auto;
+    width: 50px;
+}  
+
+.post div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.post div img {
+    height: 50px;
+    width: auto;
+}
+
+div.options {
+    display: flex;
+    justify-content: flex-end;
+    height: 50px;
+    width: 98%;
+}
+
+div.options button {
+    margin: 0px;
+}
+
+.postContent {
+    width: 98%;
+    margin: 0 auto;
+    color: white;
+    text-indent: 25px;
+    background-color: black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.actions {
+    margin-top: 20px;
+}
+
+.actions img {
+    height: 50px;
+    width: 50px;
+}
+
+.actions img.empty {
+    background-color: white;
+    height: 50px;
+    width: 50px;
+}
+
+
+.actions img.full {
+    height: 0px;
+    width: 0px;
+    margin: 0px;
+}
+
+
+.actions img.active{
+    background-color: white;
+    height: 50px;
+    width: 50px;
+}
+
+
+.actions img.inactive {
+    height: 0px;
+    width: 0px;
+    margin: 0px;
 }

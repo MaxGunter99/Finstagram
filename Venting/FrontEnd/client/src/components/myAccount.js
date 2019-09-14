@@ -11,7 +11,7 @@ export default class Post extends React.Component {
         users: [],
         currentUser: [],
         posts: [],
-        currentUserPosts: {}
+        currentUserPosts: null
     };
 
     componentDidMount() {
@@ -54,14 +54,26 @@ export default class Post extends React.Component {
         }
     }
 
+    logout = () => {
+        localStorage.removeItem("userId");
+        localStorage.removeItem("jwt");
+        localStorage.removeItem("username");
+    };
+
     render() {
         return (
-            <>
+            <> 
                 <div className = 'CurrentUser'>
-                    { this.state.currentUser.profileUrl === null ? <img src = "https://www.dts.edu/wp-content/uploads/sites/6/2018/04/Blank-Profile-Picture.jpg" alt = 'profile' classname = "ProfilePicture"/> : ( <img src = {this.state.currentUser.profileUrl} alt = 'profile' classname = "ProfilePicture"/> ) }
-                    <p>{this.state.currentUser.username}</p>
+                    <div className = 'profilepicture'>
+                        { this.state.currentUser.profileUrl === null ? <img src = "https://www.dts.edu/wp-content/uploads/sites/6/2018/04/Blank-Profile-Picture.jpg" alt = 'profile' classname = "ProfilePicture"/> : ( <img src = {this.state.currentUser.profileUrl} alt = 'profile' classname = "ProfilePicture"/> ) }
+                    </div>
+                    <div className = 'userInfo'>
+                        <p>{this.state.currentUser.username}</p>
+                        <p>{this.state.currentUser.bio}</p>
+                    </div>
+                    <Link exact to = {`/Edit/${this.state.currentUser.id}`}> Edit Profile </Link>
+                    <Link exact to = '/' onClick = { this.logout }> LogOut </Link>
                 </div>
-                { this.state.currentUserPosts === {} ? ( <p>No Posts</p> ) : ( console.log(this.state.currentUserPosts) ) }
             </>
         );
     }

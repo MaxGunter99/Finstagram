@@ -31,7 +31,7 @@ function findBy( user ) {
 
 function findById( id ) {
     return db( 'posts' )
-        .select( 'id' , 'post', 'username' )
+        .select( 'id' , 'post', 'username' , 'picture' )
         .where({ id })
         .first();
 };
@@ -44,6 +44,6 @@ function remove(id) {
 
 function update( id, changes ) {
     return db('posts')
-      .where( id )
+      .where({ id })
       .update( changes );
 }

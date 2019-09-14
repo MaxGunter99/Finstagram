@@ -1,13 +1,11 @@
 
 // IMPORTS ⬇︎
 import React from 'react';
-import { connect } from 'react-redux';
-import { register } from '../actions/index';
 import '../styles/forms.css'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-class Register extends React.Component {
+export default class Register extends React.Component {
 
     state = {
         userInfo: {
@@ -81,14 +79,14 @@ class Register extends React.Component {
 
                     <input
                         id = 'password'
-                        type = 'text'
+                        type = 'password'
                         name = 'password'
                         value = { this.state.userInfo.password }
                         placeholder = 'Password'
                         onChange = { this.changeHandler }
                     />
 
-                    <button type = 'submit' className = 'submitButton' > Register </button>
+                    <button type = 'submit' className = 'submitButton' > Done </button>
 
                     <div className = 'moreInfo'>
                         <p> Already have an account? </p>
@@ -102,8 +100,3 @@ class Register extends React.Component {
     }
 
 }
-
-export default connect(
-    null,
-    { register }
-)( Register )
