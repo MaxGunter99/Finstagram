@@ -1,5 +1,6 @@
 
 .posts {
+    margin-top: 30px;
     display: flex;
     width: auto;
     align-items: center;
@@ -8,18 +9,161 @@
 }
 
 .post {
-    width: 90%;
-    background-color: rgb(82, 82, 82);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 20px;
     margin-bottom: 20px;
-    padding: 10px;
+    border: 1px solid rgb(175, 175, 175);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: white;
+    width: 80%;
 }
 
 .username {
     color: black;
     background-color: white;
+    width: 70%;
+    margin: 0px;
+    text-indent: 30px;
+}
+
+.nopost {
+    padding-top: 100px;
+    color: black;
+}
+
+.post img {
+    width: 98%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.date {
+    color: black;
+    width: 440px;
+}
+
+img.back {
+    height: auto;
+    width: 50px;
+}  
+
+.post div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.post div img {
+    height: 50px;
+    width: auto;
+}
+
+.post .Picture {
+    height: auto;
+    width: 50%;
+}
+
+div.options {
+    display: flex;
+    justify-content: flex-end;
+    height: 50px;
+    width: 98%;
+}
+
+div.options button {
+    margin: 0px;
+}
+
+.postContent {
+    width: 98%;
+    margin: 0 auto;
+    color: white;
+    text-indent: 25px;
+    background-color: black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.actions {
+    margin-top: 20px;
+}
+
+.actions img {
+    height: 50px;
+    width: 50px;
+}
+
+.actions img.empty {
+    background-color: white;
+    height: 50px;
+    width: 50px;
+}
+
+
+.actions img.full {
+    height: 0px;
+    width: 0px;
+    margin: 0px;
+}
+
+
+.actions img.active{
+    background-color: white;
+    height: 50px;
+    width: 50px;
+}
+
+
+.actions img.inactive {
+    height: 0px;
+    width: 0px;
+    margin: 0px;
+}
+
+.commentsContainer h4 {
+    color: black;
+}
+
+.commentsContainer {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.commentsContainer .individual {
+    display: flex;
+    /* background-color: red; */
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    border: 1px solid rgb(175, 175, 175);
     padding: 10px;
+    justify-content: space-between;
+}
+
+.commentsContainer .notes{
+    width: 10%;
+    margin-right: 20px;
+}
+
+.commentsContainer form {
+    display: flex;
+    flex-direction: row;
+}
+
+.deleteButton {
+    width: 100px;
+}
+
+.commentContent {
+    display: flex;
 }

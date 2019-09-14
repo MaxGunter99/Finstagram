@@ -13,6 +13,9 @@ exports.up = function(knex) {
           .string( 'username' , 128 )
           .notNullable()
           .unique();
+
+        users
+            .string( 'bio' , 500 )
       
         users
           .string( 'password' , 128 )

@@ -1,6 +1,6 @@
 // IMPORTS ⬇︎
 const router = require( 'express' ).Router();
-const users = require( './user-model' );
+const users = require( '../helpers/user-model' );
 const restricted = require( '../auth/restricted-middleware' )
 
 // GET ALL USERS ⬇︎
@@ -46,7 +46,7 @@ router.put( '/:id' , async ( req, res ) => {
         if ( user ) {
             res.status( 200 ).json( user );
         } else {
-            res.status( 400 ).json({ message: 'Post cannot be found' });
+            res.status( 400 ).json({ message: 'User cannot be found' });
         }
     } catch ( error ) {
         console.log( error );

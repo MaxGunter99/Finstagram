@@ -1,76 +1,103 @@
 
-// IMPORTS ⬇︎
-const router = require( 'express' ).Router()
-const posts = require( './post-model' );
-const restricted = require( '../auth/restricted-middleware' );
+//IMPORTS
+const express = require( 'express' );
+const router = express.Router();
+const posts = require( '../helpers/post-model' );
 
-// GET ALL POSTS ⬇︎
-router.get( '/' , restricted , ( req , res ) => {
-    posts.find()
-        .then( posts => {
-            res.json( posts )
-        }) 
-        .catch( error => {
-            res.status( 500 ).json({ message: 'Server error getting all posts' , error })
-        })
+//GET ALL postS
+router.get( '/' , ( req , res ) => {
+    posts.get()
+    .then( post => {
+        res.status( 200 ).json( post );
+    })
+    .catch( error => {
+        res.status( 500 ).json({ message: 'Server error getting all posts' , error });
+    })
 });
 
-// ADD POST ⬇︎
-router.post( '/' , async ( req , res ) => {
-    const info = req.body;
-    if ( info.post ){
-        try {
-            const inserted = await posts.add( info );
-            res.status( 200 ).json({ message: 'Success!' , inserted })
-        } catch ( error ) {
-            res.status( 500 ).json({ message: 'error adding a post! rip' , error })
+//GET INDIVIDUAL postS
+router.get( '/:id' , ( req , res ) => {
+    const { id } = req.params;
+    posts.get( id )
+    .then( post => {
+        res.status( 200 ).json( post );
+    })
+    .catch( error => {
+        res.status( 500 ).json({ message: 'Server error getting individual post' , error })
+    })
+});
+
+//GET postS commentS
+router.get( '/:id/comments' , ( req , res ) => {
+    const { id } = req.params;
+    posts.getComments( id )
+    .then( comments => {
+        if ( comments ) {
+            res.status( 200 ).json( comments );
+        } else {
+            res.status( 404 ).json({ message: 'There are no comments for this post yet' });
+        }
+    })
+    .catch( error => {
+        res.status( 500 ).json({ message: 'Server error getting comments' , error });
+    })
+});
+
+//ADD post
+router.post( '/' , ( req , res ) => {
+    const post = req.body;
+    if ( post.postName && post.postDescription ) {
+        if ( post.postName.length < 128 ) {
+            posts.insert( post )
+            .then( newPost => {
+                res.status( 201 ).json( newPost );
+            })
+            .catch( error => {
+                res.status( 500 ).json({ message: 'Server error adding post' , error });
+            })
+        } else {
+            res.status( 405 ).json({ message: 'post name is longer than 128 characters ( unacceptable )' });
         }
     } else {
-        res.status( 400 ).json({ message: 'Missing post info, try again' })
+        res.status( 406 ).json({ message: 'post name or Description field is empty' });
     }
 });
 
-// GET Single POST ⬇︎
-router.get( '/:id' , restricted , ( req , res ) => {
-    let id = req.params.id;
-    posts.findById( id )
-        .then( posts => {
-            res.json( posts )
-        }) 
-        .catch( error => {
-            res.status( 500 ).json({ message: 'Server error getting post' , error })
-        })
-});
-
-// DELETE POST ⬇︎
-router.delete( '/:id' , async ( req, res ) => {
-    try {
-        const howMany = await posts.remove( req.params.id );
-        if ( howMany > 0 ) {
-            res.status( 200 ).json({ message: 'Post has been abliterated ;)' });
+//UPDATE post
+router.put( '/:id' , ( req , res ) => {
+    const { id } = req.params;
+    const post = req.body;
+    if ( post.postName && post.postDescription ) {
+        if ( post.postName.length < 128 ) {
+            posts.update( id , post )
+            .then( updatedPost => {
+                res.status( 200 ).json( updatedPost );
+            })
+            .catch( error => {
+                res.status( 404 ).json({ message: 'post not found' , error });
+            })
         } else {
-            res.status( 404 ).json({ message: 'Post is not found, cannot be abliterated :(' });
+            res.status( 405 ).json({ message: 'post name is longer than 128 characters ( unacceptable )' });
         }
-    } catch ( error ) {
-        console.log( error );
-        res.status( 500 ).json({ message: 'Internal error abliterating post' , error });
+    } else {
+        res.status( 400 ).json({ message: 'post name & or Description is the same as current name or description' });
     }
 });
 
-// UPDATE POST ⬇︎
-router.put( '/:id' , async ( req, res ) => {
-    try {
-        const post = await posts.update( req.params.id, req.body );
-        if ( post ) {
-            res.status( 200 ).json( post );
+//DELETE post
+router.delete( '/:id' , ( req, res ) => {
+    const { id } = req.params;
+    posts.remove( id )
+    .then( count => {
+        if ( count ) {
+            res.status( 200 ).json({ message: 'post successfully Deleted' , count });
         } else {
-            res.status( 400 ).json({ message: 'Post cannot be found' });
+            res.status( 404 ).json({ message: 'Can not find post to Delete' });
         }
-    } catch ( error ) {
-        console.log( error );
-        res.status( 500 ).json({ message: 'Error updating the Post' });
-    }
+    })
+    .catch( err => {
+        res.status(500).json({ message: 'Server error deleting post' });
+    })
 });
 
-// EXPORTS ⬇︎
 module.exports = router;

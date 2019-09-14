@@ -6,10 +6,99 @@
     justify-content: center;
     margin-top: 100px;
     align-items: center;
+    border: 1px solid rgb(175, 175, 175);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.profilepicture {
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    border-radius: 100px;
+    overflow: hidden;
+    margin-bottom: 30px;
 }
 
 .CurrentUser img {
     height: auto;
     width: 200px;
+}
+
+.profileEditForm {
+    margin-top: 80px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+.userInfo {
+    color: black;
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid rgb(175, 175, 175);
+    padding: 20px;
+
+}
+
+a {
+    margin: 10px
+}
+
+.editProfilepicture {
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
     border-radius: 100px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.editProfilepicture img {
+    height: auto;
+    width: 200px;
+}
+
+.profileEditForm p {
+    margin: 10px;
+}
+
+.editpicture {
+    display: flex;
+    justify-content: center;
+}
+
+.editpicture img {
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.settingsButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+img.settingsPicture {
+    height: auto;
+    width: 50px;
+    position: right;
+}
+
+.settingsButtons {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    height: 65px;
+}
+
+.settingsButtons button {
+    padding: 10px;
 }

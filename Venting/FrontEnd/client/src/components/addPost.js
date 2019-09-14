@@ -8,8 +8,10 @@ export default class AddPost extends React.Component {
 
     state = {
         postInfo: {
+            postName: localStorage.getItem( 'username' ),
             username: localStorage.getItem( 'username' ),
-            post: ''
+            postDescription: '',
+            picture: ''
         },
         errorMessage: ''
     }
@@ -45,6 +47,14 @@ export default class AddPost extends React.Component {
         this.setState({ errorMessage: '' })
     }
 
+    getFileInfo = event => {
+        this.setState({ file: event.target.files[0] })
+    }
+
+    ok = () => {
+        console.log( 'file' )
+    }
+
     render() {
         return (
             <div className ='FormContainer'>
@@ -57,13 +67,24 @@ export default class AddPost extends React.Component {
                 ) }
 
                 <form onSubmit = { this.post } >
+
                     <label>Create Post</label>
+
                     <input
-                        id = 'post'
+                        id = 'postDescription'
                         type = 'text'
-                        name = 'post'
-                        value = { this.state.postInfo.post }
+                        name = 'postDescription'
+                        value = { this.state.postInfo.postDescription }
                         placeholder = 'Say anything . . .'
+                        onChange = { this.changeHandler }
+                    />
+
+                    <input
+                        id = 'picture'
+                        type = 'text'
+                        name = 'picture'
+                        value = { this.state.postInfo.picture }
+                        placeholder = 'Picture url'
                         onChange = { this.changeHandler }
                     />
 

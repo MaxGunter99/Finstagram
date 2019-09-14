@@ -10,6 +10,8 @@ const cors = require( 'cors' );
 const authenticationRouter = require( '../routes/auth/authrouter' );
 const userRouter = require( '../routes/users/user-router' );
 const postRouter = require( '../routes/posts/post-router' );
+const commentsRouter = require( '../routes/comments/comments-router' );
+
 
 
 // APPLYING MIDDLEWARE ⬇︎
@@ -22,6 +24,7 @@ server.use( morgan( 'short' ) );
 server.use( '/auth' , authenticationRouter );
 server.use( '/users' , userRouter );
 server.use( '/posts' , postRouter );
+server.use( '/comments' , commentsRouter );
 
 // SANITY CHECK ⬇︎
 server.get( '/' , ( req , res ) => {

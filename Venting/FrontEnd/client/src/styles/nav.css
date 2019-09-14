@@ -1,20 +1,69 @@
 
 .NavBar {
     background-color: white;
-    width: 90%;
-    padding: 10px;
+    width: 100%;
+    padding-top: 17px;
+    padding-bottom: 18px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     position: fixed;
     top: 0;
+    align-items: center;
+    height: 40px;
+    border-bottom: 1px solid rgb(175, 175, 175);
 }
 
-.NavBar a {
-    color: black;
-    text-decoration: none;
-    transition: .5s;
+.Logo {
+    width: 265px;
+    height: 50px;
+    display: flex;
+    padding: 10px 0px 10px 0px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.NavLinks {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+}
+
+.NavBar img {
+    width: 50px;
+    height: auto;
 }
 
 a.active {
     text-decoration: underline;
+}
+
+h1 {
+    padding: 5px;
+    font-family: 'Pacifico', cursive;
+    color: black
+    /* background: #f09433;  */
+    /* background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 ); */
+}
+
+
+.LoginNavBar {
+    background-color: white;
+    width: 100%;
+    padding-top: 17px;
+    padding-bottom: 18px;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    align-items: center;
+    height: 40px;
+    border-bottom: 1px solid rgb(175, 175, 175);
+}
+
+.LoginNavBar img {
+    width: 50px;
+    height: auto;
 }

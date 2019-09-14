@@ -1,22 +1,28 @@
 
-exports.up = function(knex) {
-    return knex.schema.createTable( 'posts' , post => {
+exports.up = function(knex , Promise) {
+    return knex.schema
     
-        post.increments();
+        .createTable( 'posts' , post => {
+    
+            post.increments();
 
-        post
-            .string( 'username' )
-            .notNullable();
+            post
+                .string( 'username' )
+                .notNullable();
 
-        post
-            .string( 'post' )
-            .notNullable();
+            post
+                .string( 'picture' )
 
-        post.timestamps( true , true )
+            post.timestamps( true , true )
+
+            post.string( 'postName' ).notNullable();
+            post.string( 'postDescription' ).notNullable();
+            post.boolean( 'postCompleted' ).defaultTo( false );
+
 
     }) 
 };
 
-exports.down = function(knex) {
+exports.down = function(knex , Promise) {
     return knex.schema.dropTableIfExists( 'posts' )
 };
