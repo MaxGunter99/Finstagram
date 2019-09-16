@@ -7,6 +7,10 @@ exports.up = function(knex , Promise) {
             post.increments();
 
             post
+                .string( 'likes' )
+                .defaultTo( '0' )
+
+            post
                 .string( 'username' )
                 .notNullable();
 

@@ -25,7 +25,7 @@ export default class Post extends React.Component {
         axios
             .get(`http://localhost:3000/posts/${id}` , { headers: { Authorization: token }} )
             .then(res => {
-                console.log( res.data )
+                console.log( res.data.comments )
                 this.setState({
                     post: res.data
                 });
@@ -42,17 +42,38 @@ export default class Post extends React.Component {
             .catch(error => console.error(error));
     }
 
+    preDeletePost = () => {
+        this.componentDidMount();
+
+        for ( var i = 0; i < this.state.post.comments.length; i ++ ) {
+            let info = { commentDescription: this.state.post.comments[i].commentDescription , notes: this.state.post.comments[i].notes , postId: this.state.post.comments[i].postId }
+            const token = localStorage.getItem( 'jwt' )
+            console.log( 'info' , info )
+            axios
+                .delete(`http://localhost:3000/comments/${this.state.post.comments[i].id}` , info , { headers: { Authorization: token }} )
+                .then(res => {
+                    console.log( 'res.data' , res.data )
+                    this.componentDidMount();
+                })
+                .catch(error => console.error(error));
+        }
+
+        setTimeout( () => this.deletePost() , 500);
+    }
+
     deletePost = () => {
         const raw = window.location.pathname.toString() 
         const id = raw.replace( '/' , '' ).replace( 'Post' , '' ).replace( '/' , '' )
         const token = localStorage.getItem( 'jwt' )
+        console.log( id )
         axios
             .delete(`http://localhost:3000/posts/${id}` , { headers: { Authorization: token }} )
             .then(res => {
-                console.log( res.data )
-                // this.props.history.push( '/Posts' )
+                console.log( 'res.data' , res.data )
+                this.props.history.push( '/Posts' )
             })
             .catch(error => console.error(error));
+
     }
 
     changeHandler = event => {
@@ -117,7 +138,7 @@ export default class Post extends React.Component {
                             { this.state.post.username === OnlineUser ? ( 
                                 <div className = 'options'>
                                     <Link to = {`/EditPost/${this.state.post.id}`}><button>Edit</button> </Link>
-                                    <button onClick = { () => this.deletePost() }>Delete</button> 
+                                    <button onClick = { () => this.preDeletePost() }>Delete</button> 
                                 </div>
                             ) : null }
                         </div>

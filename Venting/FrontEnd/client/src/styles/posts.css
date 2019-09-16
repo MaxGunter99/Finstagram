@@ -18,7 +18,11 @@
     padding-top: 20px;
     padding-bottom: 20px;
     background-color: white;
-    width: 80%;
+    /* width: 80%; */
+}
+
+.noPosts {
+    color: rgb(175, 175, 175);
 }
 
 .username {
@@ -58,14 +62,14 @@ img.back {
     margin-bottom: 10px;
 }
 
-.post div img {
+.post div .ddd {
     height: 50px;
     width: auto;
 }
 
-.post .Picture {
+.post img.Picture {
     height: auto;
-    width: 50%;
+    width: 80%;
 }
 
 div.options {
@@ -94,14 +98,14 @@ div.options button {
 }
 
 .actions img {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
 }
 
 .actions img.empty {
     background-color: white;
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
 }
 
 
@@ -114,8 +118,8 @@ div.options button {
 
 .actions img.active{
     background-color: white;
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
 }
 
 
@@ -166,4 +170,11 @@ div.options button {
 
 .commentContent {
     display: flex;
+}
+
+.likeNumber {
+    color: black;
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
 }
